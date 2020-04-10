@@ -11,7 +11,7 @@ body {
 	width: 30%;
 	margin: 50px auto 0px;
 	color: white;
-	background: #5F9EA0;
+	background: #02146b;
 	text-align: center;
 	border: 1px solid #B0C4DE;
 	border-bottom: none;
@@ -55,8 +55,8 @@ form, .content {
 	width: 92%; 
 	margin: 0px auto; 
 	padding: 10px; 
-	border: 1px solid #a94442; 
-	color: #a94442; 
+	border: 1px solid #eb0e09; 
+	color: #eb0e09; 
 	background: #f2dede; 
 	border-radius: 5px; 
 	text-align: left;
