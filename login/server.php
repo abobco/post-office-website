@@ -10,6 +10,7 @@
 	$city = "";
 	$state = "";
 	$zipcode = "";
+	$dept_number = "";
 	$errors = array(); 
 	$_SESSION['success'] = "";
 
@@ -24,7 +25,8 @@
 		$street_address = mysqli_real_escape_string($db, $_POST['street_address']);
 		$city = mysqli_real_escape_string($db, $_POST['city']);
 		$state = mysqli_real_escape_string($db, $_POST['state']);
-		$zipcode = mysqli_real_escape_string($db, $_POST['zipcode']);
+		$zipcode = mysqli_real_escape_string($db, $_POST['zipcode']);	
+		$dept_number = mysqli_real_escape_string($db, $_POST['dept_number']);
 		$username = mysqli_real_escape_string($db, $_POST['username']);
 		$password = mysqli_real_escape_string($db, $_POST['password']);
 
@@ -35,6 +37,7 @@
 		if (empty($city)) { array_push($errors, "City is required"); }
 		if (empty($state)) { array_push($errors, "State is required"); }
 		if (empty($zipcode)) { array_push($errors, "Zip Code is required"); }
+		if (empty($dept_number)) { array_push($errors, "Department Number is required"); }
 		if (empty($username)) { array_push($errors, "Username is required"); }
 		if (empty($password)) { array_push($errors, "Password is required"); }
 
@@ -54,7 +57,7 @@
 			$query = "INSERT INTO employee (employee_fname, employee_lname, 
 						street_address, city, state, zipcode, d_id, username, e_password) 
 						VALUES('$employee_fname','$employee_lname', '$street_address','$city','$state', 
-						'$zipcode', '1', '$username', '$password')";
+						'$zipcode', '$dept_number', '$username', '$password')";
 			mysqli_query($db, $query);
 
 			$_SESSION['username'] = $username;

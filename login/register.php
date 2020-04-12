@@ -39,6 +39,10 @@
 			<input type="text" name="zipcode" value="<?php echo $zipcode; ?>">
 		</div>
 		<div class="input-group">
+			<label>Department Number</label>
+			<input type="text" name="dept_number" value="<?php echo $dept_number; ?>">
+		</div>
+		<div class="input-group">
 			<label>Username</label>
 			<input type="text" name="username" value="<?php echo $username; ?>">
 		</div>
