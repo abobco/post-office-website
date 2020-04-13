@@ -27,7 +27,7 @@
 			<button type="submit" class="btn" name="login_user">Login</button>
 		</div>
 		<p>
-			Not yet a member? <a href="register.php">Sign up</a>
+		<a href="register.php">Add new employee</a>
 		</p>
 	</form>
 

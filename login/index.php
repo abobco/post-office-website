@@ -41,8 +41,6 @@
 		<?php  if (isset($_SESSION['username'])) : ?>
 		<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
 		<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-		<table border = '2', cellpadding="10">
-
 		<?php 		
 			// outputs given columns of a table to html
 			function display_table($table_name, $columns) {
@@ -66,6 +64,7 @@
 				$result = mysqli_query($conn, $sql);
 
 				// output to the table
+				echo "<table border = '2', cellpadding='10'>";
 				for ( $i = 0; $i < $num_columns; $i++){
 					echo "<th>" . $columns[$i] . "</th>";
 				}		
@@ -79,10 +78,11 @@
 						}
 						echo "</tr>";
 					}
+				echo "</table>";
 				} else {
 					echo "0 results";
 				}
-				
+			
 				mysqli_close($conn);
 			}
 
@@ -103,7 +103,7 @@
 		
 		?>
 		<?php endif ?>
-		</table>
+
 	</div>
 		
 </body>
