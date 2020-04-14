@@ -36,22 +36,25 @@
 				</h3>
 			</div>
 		<?php endif ?>
-
+		
 		<!-- logged in user information -->
 		<?php  if (isset($_SESSION['username'])) : ?>
 		<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-		<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+		<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>	
+		<p> <a href="package/add package.php"> Add package </a> </p>
+		<form method="post"> 
+			<button type="submit" class="btn" name="show_employees">show employees</button>
 		<?php 		
 			include 'display_table.php';
 
-			// this function needs the SAME names as the db schema for the table and all column titles 
-			display_table("employee", array("employee_id","username", "employee_fname", "employee_lname" ));
-
-			
-		
+			if (isset($_POST['show_employees'])) {
+				// this function needs the SAME names as the db schema for the table and all column titles 
+				display_table("employee", array("employee_id","username", "employee_fname", "employee_lname" ));
+			}
+	
 		?>
 		<?php endif ?>
-
+		</form> 		
 	</div>
 		
 </body>

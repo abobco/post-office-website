@@ -1,7 +1,6 @@
 <?php 
 // outputs given columns of a table to html
 function display_table($table_name, $columns) {
-
     // Create connection
     $conn = mysqli_connect('34.69.96.56', 'root', '1234', 'post_office_db');	
     // Check connection
