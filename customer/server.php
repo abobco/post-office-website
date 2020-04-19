@@ -18,7 +18,7 @@
 	// connect to database
 	$db = mysqli_connect('34.69.96.56', 'root', '1234', 'post_office_db');
 
-	if (isset($_POST['reg_user'])) {
+	if (isset($_POST['submit'])) {
 		// receive all input values from the form
 		$customer_fname = mysqli_real_escape_string($db, $_POST['customer_fname']);
 		$customer_lname = mysqli_real_escape_string($db, $_POST['customer_lname']);
@@ -41,11 +41,23 @@
 		if (empty($email)) { array_push($errors, "Email is required"); }
 		if (empty($customer_type)) { array_push($errors, "Customer Type is required"); }
 		if (empty($age)) { array_push($errors, "Age is required"); }
-		}
+		
+
 		if (count($errors) == 0) {
 			$query = "INSERT INTO customer (customer_fname, customer_lname, street_address, city, state, zipcode, phone, email, customer_type, age)
 						VALUES('$customer_fname', '$customer_lname', '$street_address','$city', '$state', '$zipcode','$phone', '$email','$customer_type', '$age') ";
-			mysqli_query($db, $query);
-			header('location: ../index.php');
-		}
+			$result = mysqli_query($db, $query);
 
+			// check & print errors
+			if (!$result) {
+				echo "Error: ". mysqli_error($db) . "<br>";		
+				echo "Query: ". $query . "<br>";		
+				exit();
+			}
+			else
+				header('location: ../index.php');
+		}
+	}
+
+
+?>

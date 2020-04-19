@@ -28,16 +28,21 @@
 		if (empty($destination)) { array_push($errors, "Destination is required"); }
 		if (empty($location)) { array_push($errors, "Location is required"); }
 		if (empty($status)) { array_push($errors, "Status is required"); }
-	
+		if ( $status != "hold for delivery" && $hold_package > 0) {
+			array_push($errors, "Invalid status for $hold_package hold days! Try setting status to 'hold for delivery'");
+		}
 
 		if(count($errors) == 0){
 			$query = "INSERT INTO package (service, pack_type, price, hold_package, destination, location, package_status)
 					VALUES('$service', '$pack_type', '$price', '$hold_package', '$destination', '$location', '$status')";
 			
+			
 			$result = mysqli_query($db, $query);
+			// check & print errors
 			if (!$result) {
-				printf($query);
-				printf("\nError: %s\n", mysqli_error($db));
+				echo "Error: ". mysqli_error($db) . "<br>";		
+				echo "Query: ". $query . "<br>";
+				echo "<p> <a href='../index.php' style='color: blue;'>return to home</a> </p>";	
 				exit();
 			}
 			else
